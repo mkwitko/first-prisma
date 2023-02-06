@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model News {
+  id         Int      @id @default(autoincrement())
+  title      String
+  date       DateTime
+  text       String   @db.Text
+  img_path   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("news")
+}
+
+model Test {
+  id         Int      @id @default(autoincrement())
+  title      String
+  date       DateTime
+  text       String   @db.Text
+  img_path   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("test")
+}
